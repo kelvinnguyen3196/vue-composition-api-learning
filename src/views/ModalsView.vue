@@ -3,6 +3,7 @@
         <h1>Modals</h1>
         <button @click="showModal = true">Show modal</button>
         <Modal v-if="showModal">
+            <template v-slot:title>My new title</template>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, yeet.</p>
         </Modal>
     </div>
