@@ -1,15 +1,21 @@
 <script setup>
 // imports
 import { RouterLink, RouterView } from 'vue-router'
-import { reactive } from 'vue';
+import { reactive, provide } from 'vue';
 
 const userData = reactive({
 	name: 'Vienna',
 	username: 'viennabanez'
 });
+// provide userData variable to all children with name 'userData'
+provide('userData', userData);
 </script>
 
 <template>
+	<div class="user-data">
+		{{ userData.name }} @{{ userData.username }}
+	</div>
+
 	<nav>
 		<RouterLink to="/">Home</RouterLink>
 		<RouterLink to="/posts">Posts</RouterLink>
@@ -80,5 +86,15 @@ nav a {
 
 nav a:first-of-type {
 	border: 0;
+}
+
+.user-data {
+	position: absolute;
+	color: rgb(24, 22, 22);
+	background: hsla(160, 100%, 37%, 1);
+	top: 0;
+	right: 0;
+	font-size: 12px;
+	padding: 5px;
 }
 </style>

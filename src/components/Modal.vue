@@ -1,4 +1,7 @@
 <script setup>
+// imports
+import { inject } from 'vue';
+
 // props
 const props = defineProps({
     modelValue: {
@@ -18,6 +21,9 @@ const emit = defineEmits(['update:modelValue']);
 // const handleButtonClick = () => {
 //     emit('update:modelValue', false);
 // }
+
+// user data
+const userData = inject('userData');
 </script>
 
 <template>
@@ -25,6 +31,7 @@ const emit = defineEmits(['update:modelValue']);
         <div v-if="modelValue" class="modal">
             <h1>{{ title }}</h1>
             <h1>{{ props.title }}</h1>
+            <h2>{{ userData.name }}</h2>
             <slot />
             <button @click="$emit('update:modelValue', false)">Hide modal</button>
         </div>
