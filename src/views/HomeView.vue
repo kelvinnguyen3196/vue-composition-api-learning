@@ -1,7 +1,7 @@
-
-<!-- script setup pattern -->
 <script setup>
-import { ref, computed, onMounted, reactive, watch, nextTick } from 'vue';
+// imports
+import { ref, onMounted } from 'vue';
+import { useCounter } from '@/use/useCounter.js';
 import { vAutofocus } from '@/directives/vAutofocus.js';
 
 // app title
@@ -9,81 +9,13 @@ const appTitle = `My Ok Counter App`;
 const appTitleRef = ref(null);
 onMounted(() => {
     console.log(`Do stuff related to app title`);
-    console.log(appTitleRef);
 });
 
-// counter data
-const counterData = reactive({
-    count: 0,
-    title: `My Counter`
-});
-watch(() => counterData.count, (newValue, oldValue) => {
-    console.log(oldValue);
-    console.log(newValue);
-});
-watch(() => counterData.title, (newValue, oldValue) => {
-    console.log(`"${oldValue}" has been changed to "${newValue}"`);
-});
-const increaseCounter = (amount, event) => {
-    counterData.count += amount;
-    nextTick(() => {
-        console.log('do something after counter has been increased in the DOM');
-    });
-}
-const decreaseCounter = (amount) => {
-    counterData.count -= amount;
-}
-onMounted(() => {
-    console.log(`Do stuff related to counter`);
-});
-const oddOrEven = computed(() => {
-    if (counterData.count % 2 === 0) return 'even';
-    return 'odd';
-});
+// counter
+const { counterData, oddOrEven, increaseCounter, decreaseCounter } = useCounter();
 
 </script>
 
-<!-- setup function pattern -->
-<!-- <script>
-import { ref } from 'vue';
-export default {
-    setup() {
-        const counter = ref(0);
-        const increaseCounter = () => {
-            counter.value += 1;
-        }
-        const decreaseCounter = () => {
-            counter.value -= 1;
-        }
-
-        return {
-            counter,
-            increaseCounter,
-            decreaseCounter
-        }
-    }
-}
-</script> -->
-
-<!-- options API -->
-<!-- <script>
-export default {
-    data() {
-        return {
-            counter: 0
-        }
-    },
-    methods: {
-        increaseCounter() {
-            this.counter += 1;
-        },
-        decreaseCounter() {
-            this.counter -= 1;
-        }
-    },
-
-}
-</script> -->
 <template>
     <div class="home">
         <h1>Home</h1>
