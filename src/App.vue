@@ -1,5 +1,12 @@
 <script setup>
+// imports
 import { RouterLink, RouterView } from 'vue-router'
+import { reactive } from 'vue';
+
+const userData = reactive({
+	name: 'Vienna',
+	username: 'viennabanez'
+});
 </script>
 
 <template>

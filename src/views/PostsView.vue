@@ -1,16 +1,3 @@
-<template>
-    <div class="posts">
-        <h1>Posts</h1>
-        <ul>
-            <li :key="post.id" v-for="post in posts">
-                <RouterLink :to="`/postDetail/${post.id}`">{{ post.title }}</RouterLink>
-            </li>
-        </ul>
-
-        <textarea v-autofocus></textarea>
-    </div>
-</template>
-
 <script setup>
 // imports
 import { ref } from 'vue';
@@ -32,6 +19,19 @@ const posts = ref([
     },
 ]);
 </script>
+
+<template>
+    <div class="posts">
+        <h1>Posts</h1>
+        <ul>
+            <li :key="post.id" v-for="post in posts">
+                <RouterLink :to="`/postDetail/${post.id}`">{{ post.title }}</RouterLink>
+            </li>
+        </ul>
+
+        <textarea v-autofocus></textarea>
+    </div>
+</template>
 
 <style scoped>
 ul {

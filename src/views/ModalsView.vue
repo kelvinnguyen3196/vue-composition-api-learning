@@ -1,3 +1,12 @@
+<script setup>
+import { ref } from 'vue';
+import Modal from '@/components/Modal.vue';
+import ModalDark from '@/components/ModalDark.vue';
+// modal
+const showDarkModals = ref(false);
+const showModal = ref(false);
+</script>
+
 <template>
     <div id="modal">
         <h1>Modals</h1>
@@ -17,12 +26,3 @@
         </component>
     </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import Modal from '@/components/Modal.vue';
-import ModalDark from '@/components/ModalDark.vue';
-// modal
-const showDarkModals = ref(false);
-const showModal = ref(false);
-</script>
