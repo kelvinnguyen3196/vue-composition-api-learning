@@ -1,12 +1,14 @@
 // imports
 import { computed, onMounted, reactive, watch, nextTick } from 'vue';
 
+const counterData = reactive({
+    count: 0,
+    title: `My Counter`
+});
+const test = 'hello there!';
+
 export function useCounter() {
     // counter data
-    const counterData = reactive({
-        count: 0,
-        title: `My Counter`
-    });
     watch(() => counterData.count, (newValue, oldValue) => {
         console.log(oldValue);
         console.log(newValue);

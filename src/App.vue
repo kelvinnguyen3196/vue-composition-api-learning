@@ -2,6 +2,7 @@
 // imports
 import { RouterLink, RouterView } from 'vue-router'
 import { reactive, provide } from 'vue';
+import { useOnline } from '@vueuse/core';
 
 const userData = reactive({
 	name: 'Vienna',
@@ -9,11 +10,17 @@ const userData = reactive({
 });
 // provide userData variable to all children with name 'userData'
 provide('userData', userData);
+
+// online status
+const online = useOnline();
 </script>
 
 <template>
-	<div class="user-data">
-		{{ userData.name }} @{{ userData.username }}
+	<div :class="{ 'offline' : !online }" class="user-data">
+		{{ userData.name }} @{{ userData.username }} | Network Status: 
+		<span>
+			{{ online ? 'Online' : 'Offline' }}
+		</span>
 	</div>
 
 	<nav>
@@ -96,5 +103,10 @@ nav a:first-of-type {
 	right: 0;
 	font-size: 12px;
 	padding: 5px;
+}
+
+.offline {
+	background: rgb(189, 0, 0);
+	color: white;
 }
 </style>
