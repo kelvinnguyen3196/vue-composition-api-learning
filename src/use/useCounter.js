@@ -5,7 +5,6 @@ const counterData = reactive({
     count: 0,
     title: `My Counter`
 });
-const test = 'hello there!';
 
 export function useCounter() {
     // counter data
